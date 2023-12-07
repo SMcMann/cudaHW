@@ -15,7 +15,7 @@ void add(int n, float *x, float *y)
 
 int main(void)
 {
-  int N = 1<<20; // 1M elements
+  int N = 1<<29; // 512M elements
 
   // Allocate Unified Memory -- accessible from CPU or GPU
   float *x, *y;
@@ -29,8 +29,8 @@ int main(void)
   }
 
 
-  // Run kernel on 1M elements on the CPU
-  add<<<1, 1>>>(N, x, y);
+  // Run kern<<el on 1M elements on the CPU
+  add<<<1, 256>>>(N, x, y);
 
   // Check for errors (all values should be 3.0f)
   float maxError = 0.0f;

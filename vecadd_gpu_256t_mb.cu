@@ -32,8 +32,6 @@ int blockSize = 256;
 int numBlocks = (N + blockSize - 1) / blockSize;
 add<<<numBlocks, blockSize>>>(N, x, y);
 
-  // Run kernel on 1M elements on the CPU
-  add<<<1, 1>>>(N, x, y);
 
   // Check for errors (all values should be 3.0f)
   float maxError = 0.0f;
